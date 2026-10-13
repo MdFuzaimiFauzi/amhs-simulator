@@ -480,3 +480,12 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# AmhsSim
+*.db
+*.db-shm
+*.db-wal
+logs/
+# The React build output: made by "npm run build", never committed
+src/AmhsSim.Api/wwwroot/
+
