@@ -47,6 +47,6 @@ public enum AlarmCode : byte
 public enum NakReason : byte
 {
     Busy = 1,
-    NotAlllowed = 2,
+    NotAllowed = 2,
     UnknownType = 3,
 }
