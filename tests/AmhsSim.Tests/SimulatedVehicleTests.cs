@@ -48,7 +48,7 @@ public class SimulatedVehicleTests
     [Fact]
     public void Acquire_runs_hoist_down_grip_hoist_up()
     {
-        var port = TrackLayout.FindPort("A");
+        var port = TrackLayout.FindPort("A")!;
         var v = HomedVehicleAt(port.PositionMm);
         var steps = new List<SubStep>();
         v.StatusChanged += s => steps.Add(s.Step);
@@ -76,19 +76,15 @@ public class SimulatedVehicleTests
     [Fact]
     public void Stop_during_hoist_with_alarm_and_reset_requires_homing()
     {
-        var port = TrackLayout.FindPort("A");
+        var port = TrackLayout.FindPort("A")!;
         var v = HomedVehicleAt(port.PositionMm);
         Send(v, MessageType.Acquire, Payloads.Port(port.Id));
         RunFor(v, TimeSpan.FromMilliseconds(500)); // mid-hoist
-        
-        Send(v, MessageType.Stop); 
+
+        Send(v, MessageType.Stop);
         Assert.Equal(AlarmCode.StoppedDuringHoist, v.GetStatus().Alarm);
 
         Send(v, MessageType.ResetAlarm);
         Assert.Equal(VehicleState.NotHomed, v.GetStatus().State);
     }
-
-
-
-
 }

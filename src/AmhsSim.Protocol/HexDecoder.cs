@@ -20,7 +20,7 @@ public static class HexDecoder
             var buffer = new ReadOnlySequence<byte>(Convert.FromHexString(clean));
             var frames = new List<DecodedFrame>();
             while (FrameCodec.TryRead(ref buffer, out var frame))
-                frames.Add(new DecodedFrame(frame!.Type, (byte)frame.Type, frame.TxId, frame.Payload.Length, Describe(frame)));
+                frames.Add(new DecodedFrame(frame.Type, (byte)frame.Type, frame.TxId, frame.Payload.Length, Describe(frame)));
 
             string? error = frames.Count == 0 ? "No complete frame with a valid checksum found."
                 : buffer.Length > 0 ? $"{buffer.Length} trailing bytes are an incomplete frame."

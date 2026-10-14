@@ -13,7 +13,7 @@ public class FrameCodecTests
         var buffer = new ReadOnlySequence<byte>(FrameCodec.Encode(Sample));
 
         Assert.True(FrameCodec.TryRead(ref buffer, out var frame));
-        Assert.Equal(Sample.Type, frame!.Type);
+        Assert.Equal(Sample.Type, frame.Type);
         Assert.Equal(Sample.TxId, frame.TxId);
         Assert.Equal(Sample.Payload, frame.Payload);
         Assert.Equal(0, buffer.Length);
@@ -37,8 +37,8 @@ public class FrameCodecTests
 
         Assert.True(FrameCodec.TryRead(ref buffer, out var first));
         Assert.True(FrameCodec.TryRead(ref buffer, out var second));
-        Assert.Equal(7, first!.TxId);
-        Assert.Equal(8, second!.TxId);
+        Assert.Equal(7, first.TxId);
+        Assert.Equal(8, second.TxId);
     }
 
     [Fact]
@@ -50,7 +50,7 @@ public class FrameCodecTests
         var buffer = new ReadOnlySequence<byte>(stream);
 
         Assert.True(FrameCodec.TryRead(ref buffer, out var frame));
-        Assert.Equal(9, frame!.TxId);
+        Assert.Equal(9, frame.TxId);
     }
 
     [Fact]

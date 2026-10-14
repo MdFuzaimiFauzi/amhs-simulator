@@ -1,5 +1,6 @@
 using System.Buffers;
 using System.Buffers.Binary;
+using System.Diagnostics.CodeAnalysis;
 
 namespace AmhsSim.Protocol;
 
@@ -41,7 +42,7 @@ public static class FrameCodec
     /// bad checksum or impossible length, are skipped so the reader re-synchronises.
     /// Returns false when more bytes are needed.
     /// </summary>
-    public static bool TryRead(ref ReadOnlySequence<byte> buffer, out Frame? frame)
+    public static bool TryRead(ref ReadOnlySequence<byte> buffer, [NotNullWhen(true)] out Frame? frame)
     {
         frame = null;
         while (true)

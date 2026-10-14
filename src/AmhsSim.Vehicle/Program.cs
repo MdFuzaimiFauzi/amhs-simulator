@@ -22,7 +22,7 @@ app.MapPost("/vehicles/{name}/faults/{fault}", (string name, string fault, int? 
     {
         case "drop": server.DropConnection(); break;
         case "hang" : f.Hang = !f.Hang; break;
-        case "Latency" : f.LatencyMs = value ?? 0; break; 
+        case "latency" : f.LatencyMs = value ?? 0; break; 
         case "corrupt" : f.CorruptNextReply = true; break;
         case "jam" : f.JamAxis = !f.JamAxis; break;
         case "losecarrier" : f.LoseCarrier = true; break;
