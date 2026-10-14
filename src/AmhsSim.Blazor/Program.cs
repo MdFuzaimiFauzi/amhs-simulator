@@ -1,23 +1,25 @@
 using AmhsSim.Blazor.Components;
+using AmhsSim.Engine;
+using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
+builder.AddAmhsLogging("blazor");
+builder.Services.AddAmhsEngine(builder.Configuration);
+
+builder.Services.AddMudServices();
+builder.Services.AddRazorComponents().AddInteractiveServerComponents();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.Services.MigrateAmhsDatabase();
+
 if (!app.Environment.IsDevelopment())
-{
     app.UseExceptionHandler("/Error", createScopeForErrors: true);
-}
+
 app.UseStatusCodePagesWithReExecute("/not-found", createScopeForStatusCodePages: true);
 app.UseAntiforgery();
-
 app.MapStaticAssets();
-app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode();
+app.MapRazorComponents<App>().AddInteractiveServerRenderMode();
 
 app.Run();
