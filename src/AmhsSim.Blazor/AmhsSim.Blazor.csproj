@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AmhsSim.Engine\AmhsSim.Engine.csproj" />
     <ProjectReference Include="..\AmhsSim.Migrations.Sqlite\AmhsSim.Migrations.Sqlite.csproj" />
+    <ProjectReference Include="..\AmhsSim.Migrations.SqlServer\AmhsSim.Migrations.SqlServer.csproj" />
   </ItemGroup>
 
   <ItemGroup>

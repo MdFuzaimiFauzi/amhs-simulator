@@ -3,6 +3,7 @@
     <Project Path="src/AmhsSim.Blazor/AmhsSim.Blazor.csproj" />
     <Project Path="src/AmhsSim.Engine/AmhsSim.Engine.csproj" />
     <Project Path="src/AmhsSim.Migrations.Sqlite/AmhsSim.Migrations.Sqlite.csproj" />
+    <Project Path="src/AmhsSim.Migrations.SqlServer/AmhsSim.Migrations.SqlServer.csproj" />
     <Project Path="src/AmhsSim.Protocol/AmhsSim.Protocol.csproj" />
     <Project Path="src/AmhsSim.Vehicle/AmhsSim.Vehicle.csproj" />
   </Folder>
